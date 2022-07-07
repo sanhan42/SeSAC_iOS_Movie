@@ -9,8 +9,30 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var contactTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var locationsTextField: UITextField!
+    @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var additionSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
+        contactTextField.textColor = .white
+        contactTextField.backgroundColor = .black
+        contactTextField.placeholder = "Email or Phone Number"
+        contactTextField.keyboardType = .emailAddress
+        contactTextField.isSecureTextEntry = true
+        contactTextField.textAlignment = .center
+        contactTextField.borderStyle = .roundedRect
+        
+        passwordTextField.textColor = .white
+        passwordTextField.backgroundColor = .black
+        passwordTextField.placeholder = "비밀번호"
+        passwordTextField.keyboardType = .emailAddress
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.textAlignment = .center
+        passwordTextField.borderStyle = .roundedRect
 
         // Do any additional setup after loading the view.
     }
