@@ -20,11 +20,11 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         designTextField(textFieldList: textFiledList)
-        setTextPlaceholder(textField: contactTextField, placeholder: "이메일 주소 또는 전화번호")
-        setTextPlaceholder(textField: passwordTextField, placeholder: "비밀번호")
-        setTextPlaceholder(textField: nicknameTextField, placeholder: "닉네임")
-        setTextPlaceholder(textField: locationsTextField, placeholder: "위치")
-        setTextPlaceholder(textField: codeTextField, placeholder: "추천 코드 입력")
+        setPlaceholder(textField: contactTextField, placeholder: "이메일 주소 또는 전화번호")
+        setPlaceholder(textField: passwordTextField, placeholder: "비밀번호")
+        setPlaceholder(textField: nicknameTextField, placeholder: "닉네임")
+        setPlaceholder(textField: locationsTextField, placeholder: "위치")
+        setPlaceholder(textField: codeTextField, placeholder: "추천 코드 입력")
         designButton(signUpButton, title: "회원가입")
         designSwitch(additionSwitch)
 
@@ -42,9 +42,9 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    func setTextPlaceholder(textField tf:UITextField, placeholder str:String) {
-        tf.text = str
-        tf.placeholder = str
+    func setPlaceholder(textField tf:UITextField, placeholder str:String) {
+        //tf.placeholder = str
+        tf.attributedPlaceholder = NSAttributedString(string: str, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
     func designButton(_ b:UIButton, title str:String){
