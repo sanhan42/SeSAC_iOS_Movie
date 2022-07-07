@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet var textFiledList: [UITextField]!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var additionSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         designTextField(textFieldList: textFiledList)
@@ -27,7 +28,11 @@ class SignUpViewController: UIViewController {
         setPlaceholder(textField: codeTextField, placeholder: "추천 코드 입력")
         designButton(signUpButton, title: "회원가입")
         designSwitch(additionSwitch)
-
+        self.contactTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.nicknameTextField.delegate = self
+        self.locationsTextField.delegate = self
+        self.codeTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -65,14 +70,22 @@ class SignUpViewController: UIViewController {
     @IBAction func stopEditing(_ sender: Any) {
         view.endEditing(true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//           textField.resignFirstResponder() // TextField 비활성화
+        switch textField {
+        case contactTextField:
+            print(self.passwordTextField.canBecomeFirstResponder)
+            self.passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            self.nicknameTextField.becomeFirstResponder()
+        case nicknameTextField:
+            self.locationsTextField.becomeFirstResponder()
+        case locationsTextField:
+            self.codeTextField.becomeFirstResponder()
+        default:
+            self.stopEditing(self.signUpButton)
+        }
+        return true
     }
-    */
-
 }

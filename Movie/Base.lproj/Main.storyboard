@@ -218,7 +218,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="stopEditing:" destination="SZc-K5-srR" eventType="touchUpInside" id="V2W-zv-3Pl"/>
+                                    <action selector="stopEditing:" destination="SZc-K5-srR" eventType="touchUpInside" id="sUE-a7-dC5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="추가 정보 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEO-GW-3Ny">
