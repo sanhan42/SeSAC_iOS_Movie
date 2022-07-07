@@ -14,30 +14,47 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var locationsTextField: UITextField!
     @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet var textFiledList: [UITextField]!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var additionSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
-        contactTextField.textColor = .white
-        contactTextField.backgroundColor = .black
-        contactTextField.placeholder = "Email or Phone Number"
-        contactTextField.keyboardType = .emailAddress
-        contactTextField.isSecureTextEntry = true
-        contactTextField.textAlignment = .center
-        contactTextField.borderStyle = .roundedRect
-        
-        passwordTextField.textColor = .white
-        passwordTextField.backgroundColor = .black
-        passwordTextField.placeholder = "비밀번호"
-        passwordTextField.keyboardType = .emailAddress
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.textAlignment = .center
-        passwordTextField.borderStyle = .roundedRect
+        designTextField(textFieldList: textFiledList)
+        setTextPlaceholder(textField: contactTextField, placeholder: "이메일 주소 또는 전화번호")
+        setTextPlaceholder(textField: passwordTextField, placeholder: "비밀번호")
+        setTextPlaceholder(textField: nicknameTextField, placeholder: "닉네임")
+        setTextPlaceholder(textField: locationsTextField, placeholder: "위치")
+        setTextPlaceholder(textField: codeTextField, placeholder: "추천 코드 입력")
+        designButton(signUpButton, title: "회원가입")
 
         // Do any additional setup after loading the view.
     }
     
-
+    func designTextField(textFieldList list:[UITextField]){
+        for item in list{
+            item.textColor = .white
+            item.backgroundColor = .gray
+            item.keyboardType = .emailAddress
+            //item.isSecureTextEntry = true
+            item.textAlignment = .center
+            item.borderStyle = .roundedRect
+        }
+    }
+    
+    func setTextPlaceholder(textField tf:UITextField, placeholder str:String) {
+        tf.text = str
+        tf.placeholder = str
+    }
+    
+    func designButton(_ b:UIButton, title str:String){
+        b.backgroundColor = .white
+        b.layer.cornerRadius = 6        //b.setTitle(str, for: .normal)
+        //b.setTitleColor(.black, for: .normal)
+        //b.titleLabel?.font = .systemFont(ofSize: 17.0, weight: .bold) // 이렇게는 왜 적용이 안될까?
+        let attribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.black]
+        let attributedTitle = NSAttributedString(string: "회원가입", attributes: attribute)
+        b.setAttributedTitle(attributedTitle, for: .normal)
+    }
     /*
     // MARK: - Navigation
 
