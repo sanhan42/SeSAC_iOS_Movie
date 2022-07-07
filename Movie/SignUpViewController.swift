@@ -26,6 +26,7 @@ class SignUpViewController: UIViewController {
         setTextPlaceholder(textField: locationsTextField, placeholder: "위치")
         setTextPlaceholder(textField: codeTextField, placeholder: "추천 코드 입력")
         designButton(signUpButton, title: "회원가입")
+        designSwitch(additionSwitch)
 
         // Do any additional setup after loading the view.
     }
@@ -54,6 +55,15 @@ class SignUpViewController: UIViewController {
         let attribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0, weight: .bold), NSAttributedString.Key.foregroundColor: UIColor.black]
         let attributedTitle = NSAttributedString(string: "회원가입", attributes: attribute)
         b.setAttributedTitle(attributedTitle, for: .normal)
+    }
+    
+    func designSwitch(_ s:UISwitch){
+        s.setOn(true, animated: true)
+        s.onTintColor = .systemRed
+        s.thumbTintColor = .white
+    }
+    @IBAction func stopEditing(_ sender: Any) {
+        view.endEditing(true)
     }
     /*
     // MARK: - Navigation

@@ -218,6 +218,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="stopEditing:" destination="SZc-K5-srR" eventType="touchUpInside" id="V2W-zv-3Pl"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="추가 정보 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEO-GW-3Ny">
                                 <rect key="frame" x="52" y="588" width="160" height="37"/>
@@ -239,6 +242,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ljo-xw-uyK"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NRR-R8-XiJ" appends="YES" id="hiN-wu-DZa"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="additionSwitch" destination="7vQ-eS-ATQ" id="Urr-hK-atg"/>
@@ -256,6 +263,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqr-BC-6zz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NRR-R8-XiJ">
+                    <connections>
+                        <action selector="stopEditing:" destination="SZc-K5-srR" id="5X9-P9-8eH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1386.9565217391305" y="138.61607142857142"/>
         </scene>
