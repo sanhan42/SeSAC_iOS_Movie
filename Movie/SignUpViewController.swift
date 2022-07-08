@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         designTextField(textFieldList: textFiledList)
-        codeTextField.keyboardType = .numberPad
+        codeTextField.keyboardType = .numbersAndPunctuation
         setPlaceholder(textField: contactTextField, placeholder: "이메일 주소 또는 전화번호", color: .white)
         setPlaceholder(textField: passwordTextField, placeholder: "비밀번호", color: .white)
         setPlaceholder(textField: nicknameTextField, placeholder: "닉네임", color: .white)
