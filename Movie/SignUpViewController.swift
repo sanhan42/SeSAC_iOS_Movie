@@ -67,7 +67,10 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         s.onTintColor = .systemRed
         s.thumbTintColor = .white
     }
-    @IBAction func stopEditing(_ sender: Any) {
+    @IBAction func stopEditing(_ sender: UIGestureRecognizer) {
+        view.endEditing(true)
+    }
+    @IBAction func signUpButtonClicked(_ sender: UIButton) {
         view.endEditing(true)
     }
     
@@ -84,7 +87,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         case locationsTextField:
             self.codeTextField.becomeFirstResponder()
         default:
-            self.stopEditing(self.signUpButton)
+            self.signUpButtonClicked(self.signUpButton)
         }
         return true
     }
