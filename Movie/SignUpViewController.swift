@@ -75,8 +75,9 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         view.endEditing(true)
         if let password = passwordTextField.text {
             if password.count < 6 {
-                setPlaceholder(textField: passwordTextField, placeholder: "비밀번호는 최소 6자리 이상이여야 합니다", color: .red)}
-            passwordTextField.text = nil
+                setPlaceholder(textField: passwordTextField, placeholder: "비밀번호는 최소 6자리 이상이여야 합니다", color: .red)
+                passwordTextField.text = nil
+            }
         }
         if let code = codeTextField.text {
             if Int(code) == nil{
