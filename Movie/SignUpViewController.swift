@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     
     func designTextField(textFieldList list:[UITextField]){
         for item in list{
-            item.textColor = .white
+            item.textColor = .black
             item.backgroundColor = .gray
             item.keyboardType = .emailAddress
             //item.isSecureTextEntry = true
