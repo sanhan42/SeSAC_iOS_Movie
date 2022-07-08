@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 //           textField.resignFirstResponder() // TextField 비활성화
-        switch textField {
+        switch textField { // return 클릭시 다음 textField로 이동하고, 마지막 textField에서는 이동대신 회원가입 버튼을 누르도록 설정
         case contactTextField:
             print(self.passwordTextField.canBecomeFirstResponder)
             self.passwordTextField.becomeFirstResponder()
