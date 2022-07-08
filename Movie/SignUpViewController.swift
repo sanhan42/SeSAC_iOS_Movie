@@ -8,7 +8,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController,UITextFieldDelegate {
-
+    
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var nicknameTextField: UITextField!
@@ -21,11 +21,12 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         designTextField(textFieldList: textFiledList)
-        setPlaceholder(textField: contactTextField, placeholder: "이메일 주소 또는 전화번호")
-        setPlaceholder(textField: passwordTextField, placeholder: "비밀번호")
-        setPlaceholder(textField: nicknameTextField, placeholder: "닉네임")
-        setPlaceholder(textField: locationsTextField, placeholder: "위치")
-        setPlaceholder(textField: codeTextField, placeholder: "추천 코드 입력")
+        codeTextField.keyboardType = .numberPad
+        setPlaceholder(textField: contactTextField, placeholder: "이메일 주소 또는 전화번호", color: .white)
+        setPlaceholder(textField: passwordTextField, placeholder: "비밀번호", color: .white)
+        setPlaceholder(textField: nicknameTextField, placeholder: "닉네임", color: .white)
+        setPlaceholder(textField: locationsTextField, placeholder: "위치", color: .white)
+        setPlaceholder(textField: codeTextField, placeholder: "추천 코드 입력", color: .white)
         designButton(signUpButton, title: "회원가입")
         designSwitch(additionSwitch)
         self.contactTextField.delegate = self
@@ -47,9 +48,9 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
-    func setPlaceholder(textField tf:UITextField, placeholder str:String) {
+    func setPlaceholder(textField tf:UITextField, placeholder str:String, color:UIColor) {
         //tf.placeholder = str
-        tf.attributedPlaceholder = NSAttributedString(string: str, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        tf.attributedPlaceholder = NSAttributedString(string: str, attributes: [NSAttributedString.Key.foregroundColor : color])
     }
     
     func designButton(_ b:UIButton, title str:String){
@@ -72,10 +73,23 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     }
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
         view.endEditing(true)
+        if let password = passwordTextField.text {
+            if password.count < 6 {
+                setPlaceholder(textField: passwordTextField, placeholder: "비밀번호는 최소 6자리 이상이여야 합니다", color: .red)}
+            passwordTextField.text = nil
+        }
+        if let code = codeTextField.text {
+            if Int(code) == nil{
+                codeTextField.text = nil
+                setPlaceholder(textField: codeTextField, placeholder: "추천 코드는 숫자로만 입력해주세요", color: .red)
+            }
+        }
     }
     
+    //passwordTextField.text?.count
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//           textField.resignFirstResponder() // TextField 비활성화
+        //           textField.resignFirstResponder() // TextField 비활성화
         switch textField { // return 클릭시 다음 textField로 이동하고, 마지막 textField에서는 이동대신 회원가입 버튼을 누르도록 설정
         case contactTextField:
             print(self.passwordTextField.canBecomeFirstResponder)
